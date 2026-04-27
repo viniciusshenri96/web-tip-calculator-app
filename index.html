@@ -7,11 +7,46 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="assets/css/style.css">
-  <title>Tip calculator app</title>=
+  <title>Tip calculator app</title>
 </head>
 
 <body>
+  <header class="header">
+    <img src="assets/images/logo.svg" alt="logo splitter">
+  </header>
 
+  <main class="main">
+    <section class="calculator">
+      <form action="">
+        <label for="bill">Bill</label>
+        <input type="text" id="bill" name="bill" placeholder="$" required>
+        <label for="tip">Select Tip %</label>
+        <div class="calculator__buttons">
+          <button class="btn">5%</button>
+          <button class="btn">10%</button>
+          <button class="btn">15%</button>
+          <button class="btn">25%</button>
+          <button class="btn">50%</button>
+          <input type="text" id="tip" name="tip" placeholder="Custom" required>
+        </div>
+
+        <label for="people">Number of People</label>
+        <input type="text" id="people" name="people" placeholder="">
+      </form>
+
+      <div class="calculator__calc">
+        <div>
+          <p class="calculator__amount">Tip Amount <span>/ person</span></p>
+          <p class="calculator__value">$4.27</p>
+        </div>
+        <div>
+          <p class="calculator__amount">Total <span>/ person</span></p>
+          <p class="calculator__value">$32.79</p>
+        </div>
+        <button class="btn btn__reset">Reset</button>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
