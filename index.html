@@ -17,29 +17,40 @@
 
   <main class="main">
     <section class="calculator">
-      <form action="">
-        <label for="bill">Bill</label>
-        <input type="text" id="bill" name="bill" placeholder="$" required>
-        <label for="tip">Select Tip %</label>
-        <div class="calculator__buttons">
-          <button class="btn">5%</button>
-          <button class="btn">10%</button>
-          <button class="btn">15%</button>
-          <button class="btn">25%</button>
-          <button class="btn">50%</button>
-          <input type="text" id="tip" name="tip" placeholder="Custom" required>
+      <form action="" class="calculator__form">
+        <div class="calculator__bill">
+          <label for="bill">Bill</label>
+          <input class="bill" type="number" id="bill" name="bill">
         </div>
 
-        <label for="people">Number of People</label>
-        <input type="text" id="people" name="people" placeholder="">
+
+
+        <div class="calculator__tip">
+          <label for="tip">Select Tip %</label>
+          <div class="calculator__buttons">
+            <button class="btn">5%</button>
+            <button class="btn">10%</button>
+            <button class="btn">15%</button>
+            <button class="btn">25%</button>
+            <button class="btn">50%</button>
+            <input class="btn__custom" type="number" id="tip" name="tip" placeholder="Custom">
+          </div>
+        </div>
+
+
+
+        <div class="calculator__people">
+          <label for="people" class="error">Number of People <span>Can’t be zero</span></label>
+          <input class="people" type="text" id="people" name="people" placeholder="">
+        </div>
       </form>
 
       <div class="calculator__calc">
-        <div>
+        <div class="calculator__calc-container">
           <p class="calculator__amount">Tip Amount <span>/ person</span></p>
           <p class="calculator__value">$4.27</p>
         </div>
-        <div>
+        <div class="calculator__calc-container">
           <p class="calculator__amount">Total <span>/ person</span></p>
           <p class="calculator__value">$32.79</p>
         </div>

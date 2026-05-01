@@ -1,0 +1,295 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+  /* Primary */
+  --color-green400: #26c0ab;
+
+  /* Neutral */
+  --color-grey900: #00494d;
+  --color-grey500: #5e7a7d;
+  --color-grey400: #7f9c9f;
+  --color-grey200: #c5e4e7;
+  --color-grey50: #f4fafb;
+  --color-white: #ffffff;
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+
+  background-color: var(--color-grey200);
+  display: flex;
+  flex-direction: column;
+  row-gap: 88px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.calculator {
+  display: flex;
+  gap: 48px;
+  padding: 32px 32px 32px 48px;
+  background-color: var(--color-white);
+
+  border-radius: 25px;
+}
+
+.calculator__form {
+  display: grid;
+  gap: 40px;
+}
+
+.bill {
+  background-image: url("../images/icon-dollar.svg");
+  background-position: 10px center; /* Posição do ícone */
+  background-repeat: no-repeat;
+  background-size: 10px 15px;
+}
+
+.bill[type="number"] {
+  border: none;
+  text-align: right;
+  font:
+    700 1.5rem/1 "Space Mono",
+    monospace;
+  cursor: pointer;
+}
+
+.bill:focus {
+  outline-color: var(--color-green400);
+}
+
+.calculator__bill,
+.calculator__tip,
+.calculator__people {
+  display: grid;
+  row-gap: 6px;
+}
+
+.calculator__buttons {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 14px 16px;
+}
+
+.btn,
+.btn__custom {
+  width: 117px;
+  height: 48px;
+}
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: var(--color-grey900);
+  font:
+    700 1.5rem/1 "Space Mono",
+    monospace;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background: var(--color-green400);
+  color: var(--color-grey900);
+}
+
+.btn__custom::-webkit-outer-spin-button,
+.btn__custom::-webkit-inner-spin-button,
+.bill::-webkit-outer-spin-button,
+.bill::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.btn__custom[type="number"] {
+  border: none;
+  text-align: right;
+  font:
+    700 1.5rem/1 "Space Mono",
+    monospace;
+  cursor: pointer;
+}
+.btn__custom::placeholder {
+  color: #547878;
+}
+
+.btn__custom:focus {
+  outline-color: var(--color-green400);
+}
+
+.people {
+  background-image: url("../images/icon-person.svg");
+  background-position: 10px center; /* Posição do ícone */
+  background-repeat: no-repeat;
+  background-size: 13px 16px;
+}
+
+.people[type="number"] {
+  border: none;
+  text-align: right;
+  font:
+    700 1.5rem/1 "Space Mono",
+    monospace;
+  cursor: pointer;
+}
+
+.people:focus {
+  outline-color: var(--color-green400);
+}
+
+label {
+  font:
+    700 1rem/1 "Space Mono",
+    monospace;
+  color: var(--color-grey500);
+  display: block;
+  margin-bottom: 6px;
+}
+
+input {
+  padding: 6px 17px;
+  border: 0px solid black;
+  border-radius: 5px;
+  background-color: #f3f9fa;
+  width: 379px;
+}
+
+input[type="text"] {
+  text-align: right;
+  font:
+    700 24px/1 "Space Mono",
+    monospace;
+}
+
+.calculator__calc {
+  width: 413px;
+  padding: 40px 40px;
+  border-radius: 15px;
+  background: var(--color-grey900);
+  display: grid;
+  align-items: start;
+  gap: 25px;
+}
+
+.calculator__calc-container {
+  display: flex;
+  justify-content: space-between;
+}
+.calculator__amount {
+  display: grid;
+  gap: 6px;
+  font:
+    700 1rem/1 "Space Mono",
+    monospace;
+  color: var(--color-white);
+}
+
+.calculator__amount span {
+  font:
+    700 13px/1 "Space Mono",
+    monospace;
+  color: #7f9d9f;
+}
+
+.calculator__value {
+  font:
+    700 3rem/1 "Space Mono",
+    monospace;
+  letter-spacing: -1px;
+  color: var(--color-green400);
+}
+
+.btn__reset {
+  background-color: var(--color-green400);
+  color: var(--color-grey900);
+  width: 100%;
+  align-self: flex-end;
+}
+
+.btn__reset:hover {
+  background-color: #9fe8df;
+}
+
+.error {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error span {
+  color: #e17457;
+  display: none;
+}
