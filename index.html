@@ -20,12 +20,12 @@
       <form action="" class="calculator__form">
         <div class="calculator__bill">
           <label for="bill">Bill</label>
-          <input class="bill" type="number" id="bill" name="bill">
+          <input class="bill" type="number" oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6)" id="bill" name="bill">
         </div>
 
 
 
-        <div class="calculator__tip">
+        <div class=" calculator__tip">
           <label for="tip">Select Tip %</label>
           <div class="calculator__buttons">
             <button class="btn">5%</button>
@@ -40,24 +40,26 @@
 
 
         <div class="calculator__people">
-          <label for="people" class="error">Number of People <span>Can’t be zero</span></label>
-          <input class="people" type="text" id="people" name="people" placeholder="">
+          <label for="people" class="error ">Number of People <span>Can’t be zero</span></label>
+          <input class="people" type="number" id="people" name="people" oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6)">
         </div>
       </form>
 
       <div class="calculator__calc">
         <div class="calculator__calc-container">
           <p class="calculator__amount">Tip Amount <span>/ person</span></p>
-          <p class="calculator__value">$4.27</p>
+          <p class="calculator__value">$0.0</p>
         </div>
         <div class="calculator__calc-container">
           <p class="calculator__amount">Total <span>/ person</span></p>
-          <p class="calculator__value">$32.79</p>
+          <p class="calculator__value">$0.0</p>
         </div>
-        <button class="btn btn__reset">Reset</button>
+        <button class=" btn__reset">Reset</button>
       </div>
     </section>
   </main>
+
+  <script src="assets/js/script.js"></script>
 </body>
 
 </html>

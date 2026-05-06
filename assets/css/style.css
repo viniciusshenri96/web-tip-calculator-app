@@ -51,6 +51,11 @@ select {
   font: inherit;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 /* 8. Avoid text overflows */
 p,
 h1,
@@ -168,11 +173,14 @@ body {
   color: var(--color-grey900);
 }
 
-.btn__custom::-webkit-outer-spin-button,
-.btn__custom::-webkit-inner-spin-button,
-.bill::-webkit-outer-spin-button,
-.bill::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+.btn:focus {
+  background: var(--color-green400);
+  color: var(--color-grey900);
+}
+
+.focus {
+  background: var(--color-green400);
+  color: var(--color-grey900);
 }
 
 .btn__custom[type="number"] {
