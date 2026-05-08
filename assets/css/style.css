@@ -156,7 +156,8 @@ body {
   height: 48px;
 }
 
-.btn {
+.btn,
+.btn__reset {
   border: 1px solid transparent;
   border-radius: 5px;
   background: var(--color-grey900);
@@ -286,6 +287,8 @@ input[type="text"] {
   color: var(--color-grey900);
   width: 100%;
   align-self: flex-end;
+  text-transform: uppercase;
+  padding: 9px 40px;
 }
 
 .btn__reset:hover {

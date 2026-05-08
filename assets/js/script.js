@@ -8,7 +8,9 @@ const btnAll = document.querySelectorAll(".btn");
 const numberPeopleEL = document.querySelector(".people");
 const billEl = document.querySelector(".bill");
 const calcValue = document.querySelector(".calculator__value");
-
+const calcValueTotal = document.querySelector(".calculator__value-total");
+const resetBtn = document.querySelector(".btn__reset");
+const btnCuston = document.querySelector(".btn__custom");
 // LOGIC CALCULATOR
 const init = {
   bill: 0,
@@ -18,6 +20,11 @@ const init = {
 
 const calcTipAmount = function (bill, numberPeople, tip) {
   const person = (bill * tip) / 100 / numberPeople;
+  return person.toFixed(2);
+};
+
+const calcTotalPerson = function (bill, numberPeople, tip) {
+  const person = ((bill * tip) / 100 + bill) / numberPeople;
   return person.toFixed(2);
 };
 
@@ -35,6 +42,7 @@ containerBtn.addEventListener("click", function (e) {
 
     if (init.numberPeople > 0) {
       calcValue.textContent = `$${calcTipAmount(init.bill, init.numberPeople, init.tip)}`;
+      calcValueTotal.textContent = `$${calcTotalPerson(init.bill, init.numberPeople, init.tip)}`;
     }
   }
 });
@@ -47,6 +55,7 @@ billEl.addEventListener("keyup", function () {
 
     if (init.numberPeople > 0) {
       calcValue.textContent = `$${calcTipAmount(init.bill, init.numberPeople, init.tip)}`;
+      calcValueTotal.textContent = `$${calcTotalPerson(init.bill, init.numberPeople, init.tip)}`;
     }
   }
 });
@@ -58,5 +67,21 @@ numberPeopleEL.addEventListener("keyup", function () {
     init.numberPeople = +numberPeopleEL.value;
 
     calcValue.textContent = `$${calcTipAmount(init.bill, init.numberPeople, init.tip)}`;
+    calcValueTotal.textContent = `$${calcTotalPerson(init.bill, init.numberPeople, init.tip)}`;
   }
+});
+
+resetBtn.addEventListener("click", function () {
+  init.bill = 0;
+  init.numberPeople = 0;
+  init.tip = 0;
+
+  calcValue.textContent = "$0.00";
+  calcValueTotal.textContent = "$0.00";
+  billEl.value = "";
+  numberPeopleEL.value = "";
+
+  btnAll.forEach(function (btn) {
+    if (btn.classList.contains("focus")) btn.classList.remove("focus");
+  });
 });
