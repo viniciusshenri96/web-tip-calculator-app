@@ -19,8 +19,8 @@
     <section class="calculator">
       <form action="" class="calculator__form">
         <div class="calculator__bill">
-          <label for="bill">Bill</label>
-          <input class="bill" type="number" oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6)" id="bill" name="bill">
+          <label for="bill" class="error">Bill <span class="error__span-bill">Can’t be zero</span></label>
+          <input class="bill" type="number" oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6)" id="bill" name="bill" placeholder="0">
         </div>
 
 
@@ -35,24 +35,25 @@
             <button class="btn">50%</button>
             <input class="btn__custom" type="number" id="tip" name="tip" placeholder="Custom">
           </div>
+
         </div>
 
 
 
         <div class="calculator__people">
-          <label for="people" class="error ">Number of People <span>Can’t be zero</span></label>
-          <input class="people" type="number" id="people" name="people" oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6)">
+          <label for="people" class="error">Number of People <span class="error__span">Can’t be zero</span></label>
+          <input class="people" type="number" id="people" name="people" oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6)" placeholder="0">
         </div>
       </form>
 
       <div class="calculator__calc">
         <div class="calculator__calc-container">
           <p class="calculator__amount">Tip Amount <span>/ person</span></p>
-          <p class="calculator__value">$0.0</p>
+          <p class="calculator__value">$0.00</p>
         </div>
         <div class="calculator__calc-container">
           <p class="calculator__amount">Total <span>/ person</span></p>
-          <p class="calculator__value calculator__value-total">$0.0</p>
+          <p class="calculator__value calculator__value-total">$0.00</p>
         </div>
         <button class="btn__reset">Reset</button>
       </div>

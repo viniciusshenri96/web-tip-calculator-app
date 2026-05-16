@@ -11,6 +11,9 @@ const calcValue = document.querySelector(".calculator__value");
 const calcValueTotal = document.querySelector(".calculator__value-total");
 const resetBtn = document.querySelector(".btn__reset");
 const btnCuston = document.querySelector(".btn__custom");
+const inputCustom = document.querySelector(".btn__custom");
+const errorEl = document.querySelector(".error__span");
+const errorBillEl = document.querySelector(".error__span-bill");
 // LOGIC CALCULATOR
 const init = {
   bill: 0,
@@ -28,7 +31,15 @@ const calcTotalPerson = function (bill, numberPeople, tip) {
   return person.toFixed(2);
 };
 
+const isNumberPeople = function (numberPeople) {
+  if (numberPeople > 0) {
+    calcValue.textContent = `$${calcTipAmount(init.bill, init.numberPeople, init.tip)}`;
+    calcValueTotal.textContent = `$${calcTotalPerson(init.bill, init.numberPeople, init.tip)}`;
+  }
+};
+
 containerBtn.addEventListener("click", function (e) {
+  inputCustom.value = "";
   if (e.target.classList.contains("btn")) {
     e.preventDefault();
 
@@ -40,31 +51,46 @@ containerBtn.addEventListener("click", function (e) {
     const value = +e.target.textContent.slice(0, -1);
     init.tip = value;
 
-    if (init.numberPeople > 0) {
-      calcValue.textContent = `$${calcTipAmount(init.bill, init.numberPeople, init.tip)}`;
-      calcValueTotal.textContent = `$${calcTotalPerson(init.bill, init.numberPeople, init.tip)}`;
-    }
+    isNumberPeople(init.numberPeople);
   }
 });
 
-billEl.addEventListener("keyup", function () {
-  if (+billEl.value === 0 || +billEl.value === NaN || +billEl.value < 0) {
+inputCustom.addEventListener("click", function () {
+  btnAll.forEach(function (btn) {
+    if (btn.classList.contains("focus")) btn.classList.remove("focus");
+  });
+});
+
+inputCustom.addEventListener("keyup", function (e) {
+  if (
+    +inputCustom.value === 0 ||
+    +inputCustom.value === NaN ||
+    +inputCustom.value < 0
+  ) {
+    prompt("Valor Invalido");
+  } else {
+    init.tip = +inputCustom.value;
+
+    isNumberPeople(init.numberPeople);
+  }
+});
+
+billEl.addEventListener("keyup", function (e) {
+  if (+billEl.value === NaN || +billEl.value < 0) {
     console.log("Valor invalido");
   } else {
     init.bill = +billEl.value;
-
-    if (init.numberPeople > 0) {
-      calcValue.textContent = `$${calcTipAmount(init.bill, init.numberPeople, init.tip)}`;
-      calcValueTotal.textContent = `$${calcTotalPerson(init.bill, init.numberPeople, init.tip)}`;
-    }
+    errorBillEl.style.display = "none";
+    isNumberPeople(init.numberPeople);
   }
 });
 
-numberPeopleEL.addEventListener("keyup", function () {
-  if (+numberPeopleEL.value === 0 || +numberPeopleEL.value === NaN) {
+numberPeopleEL.addEventListener("keyup", function (e) {
+  if (+numberPeopleEL.value === NaN) {
     console.log("Valor invalido");
   } else {
     init.numberPeople = +numberPeopleEL.value;
+    errorEl.style.display = "none";
 
     calcValue.textContent = `$${calcTipAmount(init.bill, init.numberPeople, init.tip)}`;
     calcValueTotal.textContent = `$${calcTotalPerson(init.bill, init.numberPeople, init.tip)}`;
@@ -80,6 +106,7 @@ resetBtn.addEventListener("click", function () {
   calcValueTotal.textContent = "$0.00";
   billEl.value = "";
   numberPeopleEL.value = "";
+  inputCustom.value = "";
 
   btnAll.forEach(function (btn) {
     if (btn.classList.contains("focus")) btn.classList.remove("focus");
